@@ -4,3 +4,10 @@ dist/
 *.local
 .env
 .env.*
+
+# Local run artifacts
+frontend*.log
+frontend*.err
+
+# Temporary image workspace
+Imgstemp/
