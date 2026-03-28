@@ -1,0 +1,197 @@
+export const seedSiteData = {
+  projects: [],
+  team: [
+    {
+      _id: "team_001",
+      name: "REVANTH",
+      role: "CORE",
+      bio: "",
+      image: "",
+      linkedin: "",
+      github: "",
+      email: "REVANTHJALADI16@GMAIL.COM",
+      order: 0,
+    },
+  ],
+  plans: [
+    {
+      _id: "plan_001",
+      title: "Session 1: Introduction to AI and Prompt Engineering",
+      type: "Prompt Engineering",
+      attendees: 0,
+      description:
+        "Topics: What is AI, generative AI, and prompt engineering basics. Activity: ChatGPT usage discussion.",
+      category: "upcoming",
+      order: 1,
+    },
+    {
+      _id: "plan_002",
+      title: "Session 2: Introduction to DSA",
+      type: "DSA",
+      attendees: 0,
+      description:
+        "Topics: What is DSA, importance in placements, and basic problem solving. Activity: Simple coding questions.",
+      category: "upcoming",
+      order: 2,
+    },
+    {
+      _id: "plan_003",
+      title: "Session 3: Understanding Prompts",
+      type: "Prompt Engineering",
+      attendees: 0,
+      description:
+        "Topics: Types of prompts and good vs bad prompts. Activity: Practice writing prompts.",
+      category: "upcoming",
+      order: 3,
+    },
+    {
+      _id: "plan_004",
+      title: "Session 4: Arrays and Complexity",
+      type: "DSA",
+      attendees: 0,
+      description:
+        "Topics: Arrays and time complexity (Big-O). Activity: Solve array problems.",
+      category: "upcoming",
+      order: 4,
+    },
+    {
+      _id: "plan_005",
+      title: "Session 5: Prompt Techniques",
+      type: "Prompt Engineering",
+      attendees: 0,
+      description:
+        "Topics: Role prompting, instruction prompting, and constraints. Activity: Live demo.",
+      category: "upcoming",
+      order: 5,
+    },
+    {
+      _id: "plan_006",
+      title: "Session 6: Linked List",
+      type: "DSA",
+      attendees: 0,
+      description: "Topics: Singly linked list and core operations. Activity: Coding practice.",
+      category: "upcoming",
+      order: 6,
+    },
+    {
+      _id: "plan_007",
+      title: "Session 7: Advanced Prompting",
+      type: "Prompt Engineering",
+      attendees: 0,
+      description: "Topics: Few-shot prompting and chain-of-thought. Activity: Improve prompts.",
+      category: "upcoming",
+      order: 7,
+    },
+    {
+      _id: "plan_008",
+      title: "Session 8: Stack and Queue",
+      type: "DSA",
+      attendees: 0,
+      description: "Topics: Stack, queue, and applications. Activity: Solve problems.",
+      category: "upcoming",
+      order: 8,
+    },
+    {
+      _id: "plan_009",
+      title: "Session 9: Prompt Applications",
+      type: "Prompt Engineering",
+      attendees: 0,
+      description:
+        "Topics: Content creation, resume prompts, and project prompts. Activity: Hands-on tasks.",
+      category: "upcoming",
+      order: 9,
+    },
+    {
+      _id: "plan_010",
+      title: "Session 10: Problem Solving",
+      type: "DSA",
+      attendees: 0,
+      description: "Topics: Mixed problems and logic building. Activity: Practice session.",
+      category: "upcoming",
+      order: 10,
+    },
+    {
+      _id: "plan_011",
+      title: "Session 11: Prompt Optimization",
+      type: "Prompt Engineering",
+      attendees: 0,
+      description: "Topics: Prompt refinement and multi-step prompts. Activity: Improve outputs.",
+      category: "upcoming",
+      order: 11,
+    },
+    {
+      _id: "plan_012",
+      title: "Session 12: Final Evaluation",
+      type: "Prompt Engineering and DSA",
+      attendees: 0,
+      description: "Topics: Prompt competition and DSA coding test. Activity: Competition and feedback.",
+      category: "upcoming",
+      order: 12,
+    },
+  ],
+  home: {
+    heroBadge: "Applications Open",
+    heroDescription:
+      "Empowering engineering students through innovation, collaboration, and continuous learning.",
+    stats: [],
+    features: [
+      {
+        icon: "Users",
+        title: "Prompt Battle Arena",
+        desc:
+          "Concept: Members compete to write the best prompts.\nHow it works: Given a task, compare outputs across tools and judge creativity, accuracy, and prompt efficiency.\nBonus: Leaderboard and weekly winners.",
+        link: "/plans",
+        cta: "Enter Arena",
+      },
+      {
+        icon: "Lightbulb",
+        title: "AI Project Lab",
+        desc:
+          "Concept: Build real projects using prompts plus coding.\nActivities: chatbot API app, resume generator, AI fitness planner, image generator.\nStructure: Week 1 idea, Week 2 prompt design, Week 3 build, Week 4 demo.",
+        link: "/projects",
+        cta: "Start Building",
+      },
+      {
+        icon: "Calendar",
+        title: "Prompt-to-Product Series",
+        desc:
+          "Concept: Convert prompts into usable tools.\nExamples: blog generator, website content generator, business plan creator.\nOutcome: Learn monetization and freelancing opportunities.",
+        link: "/projects",
+        cta: "See Product Ideas",
+      },
+      {
+        icon: "Lightbulb",
+        title: "Reverse Prompt Engineering",
+        desc:
+          "Concept: Guess the prompt from AI output.\nHow it works: View output, infer the prompt, then compare with the best version.\nOutcome: Deeper reasoning and stronger prompt design skills.",
+        link: "/plans",
+        cta: "Try Challenge",
+      },
+      {
+        icon: "Users",
+        title: "Freelancing & Income Track",
+        desc:
+          "Focus: Build earning skills fast.\nActivities: Fiverr profile setup, gig writing with AI, resume and cover letter generation, client communication prompts.\nGoal: First earning within 30 days.",
+        link: "/contact",
+        cta: "Join Track",
+      },
+      {
+        icon: "Calendar",
+        title: "AI Tools Exploration Day",
+        desc:
+          "Format: Weekly or bi-weekly deep dives.\nTools: ChatGPT, Midjourney, Notion AI, GitHub Copilot.\nMembers present features, use cases, and limitations.",
+        link: "/plans",
+        cta: "View Sessions",
+      },
+      {
+        icon: "Users",
+        title: "Mini Hackathons (Monthly)",
+        desc:
+          "Duration: 4 to 6 hours.\nThemes: AI for students, healthcare, fitness, and villages.\nOutput: Working prototype plus pitch.",
+        link: "/projects",
+        cta: "Build Prototype",
+      },
+    ],
+  },
+  contacts: [],
+};
