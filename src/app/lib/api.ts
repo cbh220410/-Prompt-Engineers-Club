@@ -124,6 +124,52 @@ const STORAGE_EVENT = "pec_frontend_data_changed";
 const DISCORD_CONTACT_WEBHOOK_URL =
   import.meta.env.VITE_DISCORD_CONTACT_WEBHOOK_URL ||
   "https://discord.com/api/webhooks/1483389894414958692/3rjsr-Y-eTXpo8rK8rzLnEEoMoqu2dyb9OrmE1yY7YHva3Bufgqr8NWguz5RHeoAjMXT";
+const BASELINE_TEAM_MEMBERS: TeamMember[] = [
+  {
+    _id: "team_001",
+    name: "REVANTH",
+    role: "CORE",
+    bio: "BIO-Y24",
+    image: "",
+    linkedin: "https://www.linkedin.com/in/revanth-jaladi-800081345/",
+    github: "",
+    email: "REVANTHJALADI16@GMAIL.COM",
+    order: 0,
+  },
+  {
+    _id: "team_002",
+    name: "ASHOK",
+    role: "CORE",
+    bio: "BIO-Y24",
+    image: "",
+    linkedin: "",
+    github: "https://github.com/LunoXD/PromptEngineersClub",
+    email: "",
+    order: 1,
+  },
+  {
+    _id: "team_003",
+    name: "GOPI KRISHNA",
+    role: "CORE",
+    bio: "BIO-Y22",
+    image: "",
+    linkedin: "https://www.linkedin.com/in/krishna-sai-08597a28a/",
+    github: "",
+    email: "",
+    order: 2,
+  },
+  {
+    _id: "team_004",
+    name: "DEEPAK REDDY",
+    role: "CORE",
+    bio: "BIO-Y22",
+    image: "",
+    linkedin: "https://www.linkedin.com/in/deepakreddyyaramala20/",
+    github: "",
+    email: "",
+    order: 3,
+  },
+];
 
 function deepClone<T>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T;
@@ -147,7 +193,7 @@ function getSeedStore(): LocalDataStore {
 function normalizeStore(raw: Partial<LocalDataStore> | null | undefined): LocalDataStore {
   return {
     projects: Array.isArray(raw?.projects) ? raw!.projects : [],
-    team: Array.isArray(raw?.team) ? raw!.team : [],
+    team: mergeBaselineTeamMembers(Array.isArray(raw?.team) ? raw!.team : []),
     plans: Array.isArray(raw?.plans) ? raw!.plans : [],
     home: {
       heroBadge: raw?.home?.heroBadge || "",
@@ -222,6 +268,65 @@ function parseTags(input: unknown): string[] {
 
 function cleanText(value: unknown) {
   return String(value || "").trim();
+}
+
+function normalizePersonName(value: unknown) {
+  return cleanText(value).toUpperCase();
+}
+
+function mergeBaselineTeamMembers(team: TeamMember[]) {
+  const normalizedTeam = Array.isArray(team) ? team.map((member) => ({ ...member })) : [];
+  const indexByName = new Map<string, number>();
+  const baselineByName = new Map<string, TeamMember>();
+
+  normalizedTeam.forEach((member, idx) => {
+    indexByName.set(normalizePersonName(member.name), idx);
+  });
+
+  BASELINE_TEAM_MEMBERS.forEach((baselineMember) => {
+    const key = normalizePersonName(baselineMember.name);
+    baselineByName.set(key, baselineMember);
+    const existingIndex = indexByName.get(key);
+
+    if (existingIndex === undefined) {
+      normalizedTeam.push({ ...baselineMember });
+      indexByName.set(key, normalizedTeam.length - 1);
+      return;
+    }
+
+    const existingMember = normalizedTeam[existingIndex];
+    if (!cleanText(existingMember.bio)) {
+      existingMember.bio = baselineMember.bio;
+    }
+    if (!cleanText(existingMember.role)) {
+      existingMember.role = baselineMember.role;
+    }
+    if (!cleanText(existingMember._id)) {
+      existingMember._id = baselineMember._id;
+    }
+    if (typeof existingMember.order !== "number" || Number.isNaN(existingMember.order)) {
+      existingMember.order = baselineMember.order;
+    }
+  });
+
+  normalizedTeam.forEach((member) => {
+    const key = normalizePersonName(member.name);
+    const baseline = baselineByName.get(key);
+    if (baseline) {
+      member.role = baseline.role;
+      if (cleanText(baseline.linkedin)) {
+        member.linkedin = baseline.linkedin;
+      }
+      if (cleanText(baseline.github)) {
+        member.github = baseline.github;
+      }
+      if (key === "REVANTH") {
+        member.bio = "BIO-Y24";
+      }
+    }
+  });
+
+  return normalizedTeam;
 }
 
 function toSeedModuleText(data: LocalDataStore) {
