@@ -152,9 +152,9 @@ const PillNav = ({
     ["--pill-pad-x"]: "18px",
     ["--pill-gap"]: "3px"
   };
-  return <div className="relative w-full md:w-auto">
+  return <div className="relative w-auto">
       <nav
-    className={`w-full md:w-max flex items-center justify-between md:justify-start box-border px-4 md:px-0 ${className}`}
+    className={`w-auto md:w-max flex items-center justify-start box-border px-0 ${className}`}
     aria-label="Primary"
     style={cssVars}
   >
@@ -255,7 +255,7 @@ const PillNav = ({
   }
       <div
     ref={mobileMenuRef}
-    className={`md:hidden absolute top-[54px] left-0 right-0 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.25)] z-[998] origin-top border ${themeMode === "dark" ? "border-white/10" : "border-slate-300/70"}`}
+    className={`md:hidden absolute top-[54px] right-0 left-auto w-56 max-w-[80vw] rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.25)] z-[998] origin-top border ${themeMode === "dark" ? "border-white/10" : "border-slate-300/70"}`}
     style={{ ...cssVars, background: shellBackground }}
   >
         <ul className="list-none m-0 p-[3px] flex flex-col gap-[3px]">
@@ -272,7 +272,7 @@ const PillNav = ({
       e.currentTarget.style.background = "var(--pill-bg, #fff)";
       e.currentTarget.style.color = "var(--pill-text, #111)";
     };
-    const linkClasses = "block py-3 px-4 text-[14px] font-semibold uppercase tracking-[0.2px] rounded-[50px] transition-all duration-200";
+    const linkClasses = "block py-3 px-4 text-center whitespace-nowrap text-[14px] font-semibold uppercase tracking-[0.2px] rounded-[50px] transition-all duration-200";
     return <li key={item.href}>
                 {isRouterLink(item.href) ? <Link
       to={item.href}
